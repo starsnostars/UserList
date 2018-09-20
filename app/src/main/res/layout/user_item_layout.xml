@@ -5,8 +5,12 @@
             name="viewModel"
             type="com.example.afanasyev.userlist.UserViewModel"/>
     </data>
-    <android.support.v7.widget.AppCompatTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@{viewModel.fullName}"/>
+        android:padding="@dimen/text_margin_left"
+        android:text="@{viewModel.fullName}"
+        android:textSize="@dimen/user_list_text_size"
+        android:background="@{viewModel.isSelected ? @drawable/colorSelectedBackground : @drawable/colorRegularBackground}"
+        android:onClick="@{v -> viewModel.onClick()}" />
 </layout>
