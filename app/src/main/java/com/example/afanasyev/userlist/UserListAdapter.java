@@ -33,6 +33,18 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserHo
     }
 
     @Override
+    public void onViewAttachedToWindow(@NonNull UserHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        holder.bind();
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull UserHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        holder.unbind();
+    }
+
+    @Override
     public int getItemCount() {
         return data.size();
     }
@@ -47,18 +59,24 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserHo
 
         public UserHolder(View itemView) {
             super(itemView);
+            bind();
         }
 
         public void setViewModel(UserViewModel viewModel) {
-            getBinding().setViewModel(viewModel);
+            binding.setViewModel(viewModel);
         }
 
-        private UserItemLayoutBinding getBinding() {
+        public void bind() {
             if (binding == null) {
-                binding = DataBindingUtil.getBinding(itemView);
+                binding = DataBindingUtil.bind(itemView);
             }
+        }
 
-            return binding;
+        public void unbind() {
+            if (binding != null) {
+                binding.unbind();
+                binding = null;
+            }
         }
     }
 }
