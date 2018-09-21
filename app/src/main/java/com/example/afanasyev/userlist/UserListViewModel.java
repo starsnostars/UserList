@@ -18,12 +18,9 @@ public class UserListViewModel extends BaseObservable {
     private JsonPlaceholderService service;
     private boolean isLoading = false;
 
-    public UserListViewModel() {
-        loadUsers();
-    }
-
     public UserListViewModel(JsonPlaceholderService service) {
         this.service = service;
+        loadUsers();
     }
 
     @Bindable

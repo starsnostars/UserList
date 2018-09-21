@@ -11,42 +11,30 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.afanasyev.userlist.databinding.ActivityMainBinding;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import services.JsonPlaceholderService;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
 
 public class UserListActivity extends AppCompatActivity {
-    private UserListViewModel viewModel;
+    @Inject UserListViewModel viewModel;
+    @Inject UserListAdapter userListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         try {
-            Retrofit retrofit = new Retrofit
-                    .Builder()
-                    .baseUrl("https://jsonplaceholder.typicode.com/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            JsonPlaceholderService service = retrofit.create(JsonPlaceholderService.class);
 
             ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-            this.viewModel = new UserListViewModel(service);
-            UserListAdapter adapter = new UserListAdapter();
             binding.setViewModel(viewModel);
-            binding.setAdapter(adapter);
+            binding.setAdapter(userListAdapter);
 
             initRecyclerView(binding.getRoot());
 
         } catch (RuntimeException e) {
             Log.d("TAG", "onCreate: " + String.valueOf(e));
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        this.viewModel.loadUsers();
     }
 
     private void initRecyclerView(View v) {
