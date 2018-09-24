@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class RecyclerViewDataBinding {
     @BindingAdapter({"app:adapter", "app:data"})
-    public void bind(RecyclerView v, UserListAdapter adapter, ArrayList<UserViewModel> data) {
-        v.setAdapter(adapter);
+    public void bind(RecyclerView recyclerView, UserListAdapter adapter, ArrayList<UserViewModel> data) {
+        recyclerView.setAdapter(adapter);
         adapter.setData(data);
     }
 }

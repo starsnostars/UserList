@@ -15,8 +15,9 @@ import services.UserModel;
 
 public class UserListViewModel extends BaseObservable {
     private ArrayList<UserViewModel> users = new ArrayList<>();
-    private JsonPlaceholderService service;
     private boolean isLoading = false;
+
+    private JsonPlaceholderService service;
 
     public UserListViewModel(JsonPlaceholderService service) {
         this.service = service;

@@ -3,6 +3,7 @@ package DI;
 import android.app.Application;
 
 import com.example.afanasyev.userlist.App;
+import com.example.afanasyev.userlist.UserListActivity;
 import com.example.afanasyev.userlist.UserListViewModel;
 
 import javax.inject.Singleton;
