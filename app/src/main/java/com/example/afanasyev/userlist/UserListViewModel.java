@@ -59,7 +59,7 @@ public class UserListViewModel extends BaseObservable {
 
             @Override
             public void onFailure(Call<List<UserModel>> call, Throwable t) {
-                Log.d("TAG", "onResponse: " + String.valueOf(t));
+                Log.d("TAG", "onFailure: " + String.valueOf(t));
             }
         });
     }

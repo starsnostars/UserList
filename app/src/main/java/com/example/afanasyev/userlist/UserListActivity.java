@@ -31,7 +31,7 @@ public class UserListActivity extends AppCompatActivity {
 
             initRecyclerView(binding.getRoot());
 
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             Log.d("TAG", "onCreate: " + String.valueOf(e));
         }
     }

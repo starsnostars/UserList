@@ -1,5 +1,8 @@
 package DI;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -18,6 +21,7 @@ public class ServiceModule {
                 .Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .callbackExecutor(Executors.newSingleThreadExecutor())
                 .build();
 
         return retrofit.create(JsonPlaceholderService.class);

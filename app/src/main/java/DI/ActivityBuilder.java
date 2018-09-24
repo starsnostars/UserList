@@ -10,6 +10,6 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = { UIModule.class, ServiceModule.class })
+    @ContributesAndroidInjector(modules = { UIModule.class })
     public abstract UserListActivity bindUserListActivity();
 }
